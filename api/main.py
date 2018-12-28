@@ -1,11 +1,11 @@
 from flask import Flask, jsonify,request,request
 from pymongo import MongoClient
 from flask_restful import Resource, Api
-from security import authenticate, identity
+
 import jwt
 from flask_jwt import JWT
 from flask_cors import CORS
-from controller import authorization
+from security import authorization
 
 
 
@@ -18,16 +18,14 @@ gps=db['gps']
 controller=db['controller']
 users=db['user']
 # defining server url and port 
-serverurl = '192.168.43.52'
-# serverurl = '127.0.0.1'
+# serverurl = '192.168.43.52'
+serverurl = '127.0.0.1'
 port=5000
 # define flask app
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
-app.secret_key = 'kbnsystems'
 
-jwt = JWT(app, authenticate,identity)
 
 
 #chrCur="11.2-5-6-0-6-3-78-222.33-665.235"
