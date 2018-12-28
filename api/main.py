@@ -126,7 +126,7 @@ class Login(Resource):
             authh = authorization(duser)
             access_token, refresh_token = authh.authenticate()  
         else:
-            return 'Wrong Details'
+            return ({"Response": "Wrong Details"})
         # return jsonify({'token': token})
         return jsonify({'data': {"access_token":access_token,
                                     "refresh_token": refresh_token,
