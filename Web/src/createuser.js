@@ -6,6 +6,7 @@ class createUser extends Component {
     render() {
         return (
         <div>
+            
             {/* <img src={require('./images/bluebg.jpg')}  height ="640" width = "1400"/> */}
         {/* login form */}
         <form>
@@ -51,7 +52,7 @@ class createUser extends Component {
     width: '410px',           /* Set this to your convenience */
     height: '510px',          /* Set this to your convenience */
     position: 'absolute',
-    top: '20%',
+    top: '40%',
     left: '40%',
     marginTop: '-100px',     /* Half of height */
     marginLeft: '-150px',     /* Half of width */

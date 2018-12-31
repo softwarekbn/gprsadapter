@@ -18,8 +18,9 @@ class Login extends Component {
         PostData(this.state).then((result)=> {
             let responseJson = result;
             console.log(responseJson);
-            if(responseJson.token){
-                sessionStorage.setItem('userData' , responseJson);
+            if(responseJson.data){
+               var a = JSON.stringify(responseJson)
+                sessionStorage.setItem('userData' , a);
                 this.setState({redirect:true});
             }
             else{
@@ -79,24 +80,22 @@ class Login extends Component {
     border: '1px solid black',
     borderRadius:'30px',
     backgroundColor:'',
-    boxShadow: "2px 3px 2px #000000",
+    boxShadow: "1px 1px 1px #000000",
  }
  const usernameinput = {
      marginTop:'20px',
      marginLeft:'10px',
-     fontSize:"20px",
-     textShadow: "1px 1px 1px #000000",
+     fontSize:"15px",
  }
  const passwordinput = {
     marginLeft:'10px',
-    fontSize:"20px",
-    textShadow: "1px 1px 1px #000000",
+    fontSize:"15px",
 }
 const loginbutton = {
     marginLeft:'40%',
     border: '1px solid black',
     borderRadius:'10px',
-    boxShadow: "3px 5px 2px #000000",
+    boxShadow: "1px 1px 1px #000000",
     backgroundColor:"green",
     color:"white",
     hover:"black",
@@ -108,6 +107,6 @@ const round = {
     textShadow: "1px 1px 1px #000000",
     border: '1px solid black',
     borderRadius:'10px',
-    boxShadow: "3px 5px 2px #000000",
+    boxShadow: "1px 1px 1px #000000",
 }
 export default Login;
