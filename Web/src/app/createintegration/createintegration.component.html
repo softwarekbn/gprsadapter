@@ -1,0 +1,193 @@
+<!-- partial -->
+<div class="main-panel" >
+  <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+    <div class="content-wrapper">
+      <div class="card">
+       <div class="card-body">
+          <h5 class="card-title">Create Integration with company:&nbsp;
+            <span style="color: peru">{{cmpNameForInteg}}</span>&nbsp;, 
+            company id: &nbsp;<span style="color: peru">{{cmpIdForInteg}}</span></h5>
+          <div class="row">
+              <div class="col-md-4">
+                  <form role="form" [formGroup]="createIntergrationForm" 
+                    (ngSubmit)=" createIntegration1(createIntergrationForm.value)">
+                    <div class="form-group">
+                    <label>Source</label>
+                    <select class="form-control"  formControlName="Name" required=""
+                         [(ngModel)]="newIntegration.sourceType.name" (change)="selectedProject()"
+                         style="border-left: 3px solid red">
+                         <option>-----------</option>
+                         <option>99 Acres</option>
+                        <option>Magicbricks</option>
+                        
+                    </select> 
+                   </div>
+                  
+                   <div class="form-group">
+                       <label *ngIf="!show">Key</label>
+                       <label *ngIf="show">Username</label>
+                       <input type="text" formControlName="userName" required="" 
+                       class="form-control" placeholder="key" 
+                       [(ngModel)]="newIntegration.key" style="border-left: 3px solid red">
+
+                       <label *ngIf="lblUser" style="color: red">Must be Enter Username *</label>
+                      </div>
+                      
+                      <div class="form-group">
+                         <label  *ngIf="!show">Value</label>
+                         <label  *ngIf="show">Password</label>
+                         <input type="password"  formControlName="value" required=""  
+                         class="form-control" placeholder="value" 
+                         [(ngModel)]="newIntegration.value" style="border-left: 3px solid red">
+
+                         <label *ngIf="lblPass" style="color: red">Must be Enter Password</label>
+                        </div>
+                        
+                        <div class="form-group">
+                          <button type="submit" [hidden]='bHideBtn'
+                          class="btn btn-primary">Save</button> &nbsp;
+                          <button (click)="cancelIntegration()"class="btn btn-danger">Cancel</button>
+                  
+                     </div>
+                 
+                  </form>
+                  <button (click)="testIntegrationWithDate()" [hidden]='!bHideBtn'
+                  data-toggle="modal" data-target="#testintegration"
+                   class="btn btn-primary">Test Integration</button>
+                 </div>
+              </div>
+         </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    
+  </div>
+  
+  <div class="modal" id="testintegration">
+    <div class="modal-dialog " >
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="background-color:#daf4f9">
+          <h4 class="modal-title">Leads Assignment</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="col-md-10" >
+            <div class="row">
+                      <div class="col-xs-12 col-12 col-md-6 form-group">
+                          <label>Start Date</label>
+                            <input type="text"
+                                class="form-control"
+                                #dp="bsDatepicker"
+                                bsDatepicker
+                                [(ngModel)]="sDate" (ngModelChange)="selectStartDate($event)"
+                                style="border-left:3px solid red">
+                        </div>
+                        <div class="col-xs-12 col-12 col-md-6 form-group">
+                            <label>End Date</label>
+                              <input type="text"
+                                  class="form-control"
+                                  #dp="bsDatepicker"
+                                  bsDatepicker
+                                  [(ngModel)]="eDate" (ngModelChange)="selectEndDate($event)"
+                                  style="border-right:3px solid red">
+                          </div>
+                  </div>
+                  
+                       <div class="col-xs-12 col-12 col-md-3 form-group">
+                              <!--button class="btn btn-success" (click)="dp.toggle()" 
+                              [attr.aria-expanded]="dp.isOpen"></button-->
+                              <button class="btn btn-primary" data-dismiss="modal" *ngIf="!bTestIntegBtn" 
+                              (click)="testIntegration()">Test Integration</button>
+                              <button class="btn btn-2" *ngIf="bTestIntegBtn" 
+                              (click)="testIntegration()">Test Integration</button>
+                </div>
+                </div><!-- content-wrapper ends -->     
+         
+       </div><!-- Modal body End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container" >
+  <h2>Create Integration</h2>
+  <div class="col-md-6">
+ <form role="form" [formGroup]="createIntergrationForm" 
+   (ngSubmit)=" createIntegration(createIntergrationForm.value)">
+   <div class="form-group">
+   <label>Source</label>
+   <select class="form-control"  formControlName="Name" required=""
+        [(ngModel)]="newIntegration.sourceType.name">
+     <option>99 Acres</option>
+     <option>Magicbricks</option>
+     <option>Facebook</option>
+     <option>Google</option>
+     <option>Excelsheet</option>
+   </select> 
+  </div>
+  <div class="form-group">
+      <label>CompanyId</label>
+      <select class="form-control"  formControlName="companyId" required="" 
+         [(ngModel)]="newIntegration.companyId">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+     </div>
+  <div class="form-group">
+      <label>Key</label>
+      <input type="text" formControlName="userName" required="" 
+      class="form-control" placeholder="Key"
+      [(ngModel)]="newIntegration.key">
+     </div>
+     
+     <div class="form-group">
+        <label>Value</label>
+        <input type="text"  formControlName="value" required=""  
+        class="form-control" placeholder="value"
+        [(ngModel)]="newIntegration.value">
+       </div>
+       <div class="form-group">
+         <button type="submit" [disabled]="!createIntergrationForm.valid" class="btn btn-primary" >Save</button> &nbsp;
+         <button (click)="cancelIntegration()"class="btn btn-danger">Cancel</button>
+    
+     
+       </div>
+
+ </form>
+</div>
+</div>-->

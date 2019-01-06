@@ -1,0 +1,292 @@
+<!-- partial -->
+<div class="main-panel">
+  <div class="my-container">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+  <div class="content-wrapper">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">UserName : {{user}} | ({{userRole}}), 
+          Company Name : {{loginCompanyName}} , CompanyId : {{companyId}} </h4>
+              <hr>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group" style="padding:20px auto;">
+                          <button type="submit" class="btn" (click)="addProject()">Add Project</button>
+                          &nbsp;
+                          <button type="submit" class="btn" (click)="crmDashboard()" style="margin-left: 20px;">CRM</button>
+                          &nbsp;
+                          <button type="submit" class="btn" (click)="addUser()" style="margin-left: 20px;">Add User</button>
+                          &nbsp;
+                          <button class="btn" (click)="billingInfo()" style="margin-left: 20px;">Billing Info</button>
+                          <button class="btn" (click)="signOut()" style="margin-left: 20px;">Signout</button>
+                      </div>
+                      <hr>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <label *ngIf="companies">Company List : {{companies.length}}</label>
+                                <select class="form-control" *ngIf="companies" [(ngModel)]="companyName" (change)="selectedCompany()">
+                                    <option>------</option>
+                                    <option *ngFor="let company of companies">{{company.companyName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                  <div class="col-md-4" *ngIf="isUser">
+                      <div class="form-group">
+                          <label *ngIf="projects">Project List : {{projects.length}}</label>
+                          <select *ngIf="projects" class="form-control" [(ngModel)]="projectName" (change)="projectList()">
+                              <option>------</option>
+                              <option *ngFor="let project of projects">{{project.projectName}}</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4" *ngIf="!isUser">
+                      <div class="form-group">
+                          <label>Project List </label>
+                          <select class="form-control">
+                              <option>Project Not Avalible</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4" *ngIf="showUser">
+                      <div class="form-group">
+                          <label *ngIf="users">User List : {{users.length}}</label>
+                          <select class="form-control" *ngIf="users" [(ngModel)]="userName" (change)="user()">
+                              <option>------</option>
+                              <option *ngFor="let user of users">{{user.userName}}</option>
+
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4" *ngIf="!showUser">
+                      <div class="form-group">
+                          <label>User List </label>
+                          <select class="form-control">
+                              <option>User not Avalible</option>
+                          </select>
+                      </div>
+                  </div>
+                  
+
+                  <div class="col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="d-flex align-items-center justify-content-between pb-4">
+                                  <h4 class="card-title mb-0"><button class="btn btn-primary"
+                                    (click)="show()">Lead Count</button></h4>
+                              </div>
+                              <div >
+                                <div class="row" [hidden]="bShow">
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Raw Leads</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.rawLeadsCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Current Leads</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.currentLeadsCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Follow Up</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.followUpsCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Visit Done</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.visitDoneCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">No Work</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.noWorkCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Visit On</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.visitOnCounts}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Visit Dead</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.visitDeadCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Plot Count</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.plotCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Other Project</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.otherProjectsCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Already Booked</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.alreadyBookedCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Resale</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.resaleCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Booked</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.bookedDone}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Rent Count</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.rentCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Duplicate Count</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.duplicateCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Not Connceted</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.notConnectedCount}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <div class="d-flex">
+                                                  <div class="inner flex-grow">
+                                                      <p class="mb-0">Booked Done</p>
+                                                      <h4 class="font-weight-bold">{{leadsCount.bookedDone}}</h4>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+           </div>
+          </div>
+      </div>
+    </div>
+
+<!-- content-wrapper ends -->
+<footer class="footer">
+  <div class="container-fluid clearfix">
+      <p class=" text-center ">Copyright © 2018 . All rights reserved. | Developed By : <a href="http://www.brndsbrother.com" target="_blank">BrandsBrother</a></p>
+
+  </div>
+</footer>

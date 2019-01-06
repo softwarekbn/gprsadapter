@@ -1,0 +1,110 @@
+<!-- partial -->
+<div class="main-panel" >
+  <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+    <div class="content-wrapper">
+      <div class="card">
+       <div class="card-body">
+          <h4 class="card-title" style="color: #fb4b1a">Create User</h4>
+          <div class="row">
+              <div class="col-md-6"> 
+                  <form role="form" [formGroup]="createuserForm"
+                  (ngSubmit)="createUser(createuserForm.value)">
+                      
+                    <div class="form-group">
+                      <label>Phone Number</label>
+                       <input type="text" formControlName="phoneNumber" required="" class="form-control"
+                       [(ngModel)]="user.phoneNumber" style="padding: 9px;" placeholder="Phone Number" 
+                        (change)="validatePhone()">
+                        <label *ngIf="phoneB" style="color: red">Enter 10 degit mobile number</label>
+                       <label *ngIf="phoneB0" style="color: red">First digit must not be zero</label>
+                    </div>
+                  <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text"  formControlName="userName" required="" class="form-control"
+                        [(ngModel)]="user.userName" style="padding: 9px;" placeholder="UserName" 
+                        (change)="validateUser()">
+                        <label *ngIf="cuser" style="color: red">Enter Must be UserName</label>
+                  </div>
+                  <div class="form-group">
+                      <label>Password</label>
+                        <input type="password" formControlName="password" required="" class="form-control"
+                         [(ngModel)]="user.password" style="padding: 9px;" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label>Confirm Password</label>
+                      <input type="password" formControlName="cPassword" required="" class="form-control" 
+                      placeholder="Confirm Password"style="padding: 9px;" (keyup)="confirmPassword($event)" 
+                       [(ngModel)]="user.confirmPassword">
+                    <span style="float:right" *ngIf="cpy">
+                    <i class="fa fa-check-circle-o" aria-hidden="true" style="color: rgb(9, 238, 9);font-size:25px;"></i></span>
+                    <span style="float:right" *ngIf="cpn">
+                    <i class="fa fa-window-close" aria-hidden="true" style="color: red"></i></span>
+                  </div>
+                  <div class="form-group" *ngIf="companies">
+                    <label>Company</label>
+                    <select class="form-control" [(ngModel)]="companyName" 
+                    formControlName="companyID" required="" placeholder="select Company Id" 
+                    (change)="validateComp()">
+                    <option>---------</option>
+                    <option *ngFor="let company of companies">{{company.companyName}}</option>
+                  </select> 
+                  
+                  <label *ngIf="lblComp" style="color:red;">Must Be Enter Company Id</label>
+
+                   </div>
+                   
+                   <div class="form-group">
+                     <label>Email</label>
+                      <input type="email" formControlName="email" required="" class="form-control" 
+                       [(ngModel)]="user.email" style="padding: 9px;" placeholder="Enter Email-Id" 
+                        (change)="validateEmail()">
+                        <label *ngIf="cuemail" style="color: red">Please enter valid Email</label>
+                  </div>
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="firstname" formControlName="firstName" required="" class="form-control"
+                    [(ngModel)]="user.firstName" style="padding: 9px;" placeholder="Enter FirstName" 
+                      (change)="validatefName()">
+                      <label *ngIf="fName" style="color:red">Enter Must be First Name</label>
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                      <input type="lastname" formControlName="lastName" required="" class="form-control"
+                        [(ngModel)]="user.lastName" style="padding: 9px;" placeholder="Enter Last Name"
+                        (change)="validatelName()">
+                        <label *ngIf="lName" style="color: red;">Enter Must be Last Name</label>
+                   </div>
+                  <div class="form-group">
+                    <label>Role Name</label>
+                    <select formControlName="roleName" required="" class="form-control" [(ngModel)]="user.role.name"
+                    (change)="selectedRole()" style="padding: 9px;">
+                    <option>--------</option>
+                    <option *ngFor="let role of roles">{{role}}</option>
+                  </select>
+                  </div>
+                    <div class="form-group" [hidden]="bSelectProject">
+                      <label>Project Name</label>
+                      <select formControlName="projectName" required="" class="form-control" 
+                      [(ngModel)]="user.project.projectName" (change)="selectedProject()" style="padding: 9px;">
+                      <option>-----------</option>
+                      <option *ngFor="let project of projects">{{project}}</option>
+                    </select>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-icon" 
+                    style="margin-left: 10px;">Save</button>
+                    <button (click)="cancleuser()"  class="btn btn-success btn-icon" 
+                    style="margin-left: 10px;">Cancel</button>
+                </form>
+              
+                </div>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    
+  </div>

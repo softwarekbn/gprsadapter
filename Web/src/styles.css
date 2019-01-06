@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+*/
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "assets/mystyle.css";
+@import "assets/vcglobalcss.css";
+@import "assets/w3.css";
+@import "assets/bs.datepicker.css";
+.container{
+    margin-bottom: 150px;
+}

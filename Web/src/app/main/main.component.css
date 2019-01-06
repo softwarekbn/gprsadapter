@@ -1,0 +1,106 @@
+@media only screen and (max-width: 768px) {
+    .main-panel .content-wrapper{
+       margin-left: 0px;
+        width: 100%;
+       }  
+    .table-responsive{
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 486px) {
+    .main-panel .content-wrapper{
+       margin-left: -64px;
+        width: 100%;
+       }  
+    .table-responsive{
+        width: 100%;
+    }
+}
+.main-panel{
+    margin-left: 20%;
+   }
+   .card{
+    background:#87ceeb;
+    color: #131e42;
+    box-shadow:1px 1px 1px 1px #cccccc;
+    
+   }
+ .card .card-body  a{
+       cursor: pointer;
+       color: #131e42;
+   }
+   .card .card-body  a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.text-muted{
+    color: #ffffff;
+}
+
+.card {
+    border: 1px solid rgba(242, 242, 242, 0.58);
+    box-shadow: 0 0.75rem 1.5rem rgba(236, 242, 247, 0.56);
+    border-radius: 5px; }
+    /* .card .card-body {
+      padding: 1.88rem 1.81rem; } */
+      .card .card-body + .card-body {
+        padding-top: 0; }
+    .card.card-flat {
+      box-shadow: none; }
+    .card.card-outline-success {
+      border: 1px solid #0cca8e; }
+    .card.card-outline-primary {
+      border: 1px solid #269bff; }
+    .card.card-outline-warning {
+      border: 1px solid #FEBA47; }
+    .card.card-outline-danger {
+      border: 1px solid #F1635F; }
+    .card.card-rounded {
+      border-radius: 5px; }
+    .card.card-faded {
+      background: #b5b0b2;
+      border-color: #b5b0b2; }
+    .card.card-circle-progress {
+      color: #ffffff;
+      text-align: center; }
+  
+  .card-inverse-primary {
+    background: rgba(38, 155, 255, 0.2);
+    border: 1px solid #238feb;
+    color: #1d76c2; }
+  
+  .card-inverse-secondary {
+    background: rgba(227, 232, 232, 0.2);
+    border: 1px solid #d1d5d5;
+    color: #adb0b0; }
+  
+  .card-inverse-success {
+    background: rgba(12, 202, 142, 0.2);
+    border: 1px solid #0bba83;
+    color: #099a6c; }
+  
+  .card-inverse-info {
+    background: rgba(0, 156, 138, 0.2);
+    border: 1px solid #00907f;
+    color: #007769; }
+  
+  .card-inverse-warning {
+    background: rgba(254, 186, 71, 0.2);
+    border: 1px solid #eaab41;
+    color: #c18d36; }
+  
+  .card-inverse-danger {
+    background: rgba(241, 99, 95, 0.2);
+    border: 1px solid #de5b57;
+    color: #b74b48; }
+  
+  .card-inverse-light {
+    background: rgba(249, 251, 251, 0.2);
+    border: 1px solid #e5e7e7;
+    color: #bdbfbf; }
+  
+  .card-inverse-dark {
+    background: rgba(36, 35, 41, 0.2);
+    border: 1px solid #212026;
+    color: #1b1b1f; }

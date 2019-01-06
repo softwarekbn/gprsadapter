@@ -1,0 +1,109 @@
+<!-- *ngIf="leadsCount" -->
+<div  class="w3-sidebar w3-bar-block w3-border-right" style="
+color:#131e42;width:273px;box-shadow: 1px 1px 1px 1px #555555;" id="mySidebar">
+
+  <button (click)="w3_close()" class="w3-bar-item w3-large" 
+  style="background:#00Bfff;color:#131e42; box-shadow: 2px 2px 2px 2px #555555;"><span>
+      <img src="assets/images/VC-512-px-512px.png" alt="profile image" style="height: 35px;margin-left: 20px;">
+  </span>
+  <i class="fa fa-window-close" style="font-size:20px;color:white;margin-left:120px;
+    border-radius:25px;margin-top:8px"></i> </button>
+  
+    <p *ngIf='false'  class="w3-bar-item w3-button">{{loginCompanyName}}</p>
+  
+  <button (click)="dashboard()" *ngIf="bsAdmin" class="w3-bar-item w3-button"> <img src="assets/icons/Home.svg" 
+    style="height: 20px;"> &nbsp;Dashboard ({{userRole}})</button>
+
+    <button (click)="dashboard()" *ngIf="!bsAdmin" class="w3-bar-item w3-button"> <img src="assets/icons/Home.svg" 
+      style="height: 20px;"> &nbsp;Dashboard ({{userRole}})</button>
+  <!--<a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="vedagya19">
+    Manage Integrations</a>-->
+  <a routerLink="projects" class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
+    style="height: 20px;"> &nbsp; Projects</a>
+  <a routerLink="manageUser" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+    style="height: 20px;"> &nbsp; Users</a>
+  <a routerLink="manageCompanies" class="w3-bar-item w3-button" *ngIf="showCompany"><img src="assets/icons/Companies.svg" 
+    style="height: 20px;"> &nbsp; Companies</a>
+  <a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="showToAdminOnly"><img src="assets/icons/Integration.svg" 
+      style="height: 20px;"> &nbsp; Integration</a>
+      <a routerLink="uploadFiles" class="w3-bar-item w3-button" *ngIf="bUploadExcel">
+        <img src="assets/icons/Upload icon VC.svg" style="height: 20px;"> &nbsp;
+        Upload Leads (Excel file)</a>
+  <div>
+    <button (click)="showHide()" style="background: transparent;border: none;" 
+     class="w3-bar-item w3-button"><img src="assets/icons/Leads.svg" 
+     style="height: 20px;"> &nbsp;CRM  <i class="fa fa-caret-down"></i></button>
+    <div *ngIf="show">
+    
+  <a routerLink="rawLead" class="w3-bar-item w3-button">Raw Leads: {{leadsCount.rawLeadsCount}}</a>
+  <a routerLink="currentLead" class="w3-bar-item w3-button">Current Leads:
+    {{leadsCount.currentLeadsCount}}</a>
+  <a routerLink="noWorkLead" class="w3-bar-item w3-button">No work:
+    {{leadsCount.noWorkCount}}</a> 
+    <a routerLink="notConnectedLead" class="w3-bar-item w3-button">Not Connected:
+      {{leadsCount.notConnectedCount}}</a>
+  <a routerLink="followUpLead" class="w3-bar-item w3-button">Follow Up:
+    {{leadsCount.followUpsCount}}</a>
+  <a routerLink="visitOnLead" class="w3-bar-item w3-button">Visit On:
+    {{leadsCount.visitOnCounts}}</a>
+  <a routerLink="visitDoneLead" class="w3-bar-item w3-button">Visit Done:
+    {{leadsCount.visitDoneCount}}</a>
+  <a routerLink="visitDeadLead" class="w3-bar-item w3-button">Visit Dead:
+    {{leadsCount.visitDeadCount}}</a>
+  <a routerLink="otherProjectLead" class="w3-bar-item w3-button">Other project Count:
+    {{leadsCount.otherProjectsCount}}</a>
+  <a routerLink="resaleLead" class="w3-bar-item w3-button">Resale Count:
+  {{leadsCount.resaleCount}}</a>
+  <a routerLink="alreadyBookedLead" class="w3-bar-item w3-button">Already Booked:
+    {{leadsCount.alreadyBookedCount}}</a>
+  <a routerLink="bookedDoneLead" class="w3-bar-item w3-button">Booked Done:
+    {{leadsCount.bookedDone}}</a>
+  <a routerLink="deadLead" class="w3-bar-item w3-button">Dead Count:
+    {{leadsCount.deadCount}}</a>
+  <a routerLink="rentLead" class="w3-bar-item w3-button">Rent Count:
+    {{leadsCount.rentCount}}</a>
+  <a routerLink="plotLead" class="w3-bar-item w3-button">Plot Count:
+    {{leadsCount.plotCount}}</a>
+  <a routerLink="duplicateLead" class="w3-bar-item w3-button">Duplicate Count:
+    {{leadsCount.duplicateCount}}</a>
+  </div>
+</div>  
+
+    <a routerLink="sales" class="w3-bar-item w3-button" > <img src="assets/icons/Team Location.svg" 
+      style="height: 20px;"> &nbsp;Where is My Team ?</a>
+    <a routerLink="leadsuserproject" *ngIf='showToAdminOnly'  class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
+      style="height: 20px;"> &nbsp;Project and User Leads</a>
+    <a routerLink="" class="w3-bar-item w3-button"><img src="assets/icons/Logout.svg" 
+      style="height: 20px;"> &nbsp;Logout</a>
+    <div style="margin-bottom: 20px;"></div>
+</div>
+
+
+<div class="w3-teal " >
+ 
+  <div class="w3-container " style="background:#00Bfff;color:#131e42;
+       box-shadow: 2px 2px 2px 2px #cccccc;">
+       
+      <button class="w3-button w3-teal w3-xlarge myhoverclass" (click)="w3_open()">☰</button>
+     <img src="assets/images/VC-512-px-512px.png" alt="profile image" style="height: 50px;">
+              
+    
+   <div style="float:right"> 
+     <h5 style="float:left; margin-right:8px;margin-top:4px;font-size: 15px;">
+      <h5  style="float: left; font-size: 15px;">
+        <a routerLink="home" style="color:#131e42;">
+          <img src="assets/icons/Home.svg" style="height: 15px;margin-top: -4px;"> 
+          Home | </a>
+      </h5>
+      <h5 style="float: left; margin-right:8px;font-size: 15px;">
+        {{loginCompanyName}} | <img src="assets/icons/User.svg" style="height: 15px;margin-top: -4px;"> 
+        &nbsp;{{user}} | <img src="assets/icons/Logout.svg" style="height: 15px;margin-top: -4px;">
+        <a routerLink="" ><span style="color:#131e42;">Logout</span></a>
+        </h5>
+      </h5>
+      
+    
+  </div>
+  </div>
+</div>
+

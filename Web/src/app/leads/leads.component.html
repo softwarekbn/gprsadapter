@@ -1,0 +1,122 @@
+<div class="main-panel" >
+  <div class="my-container">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+<div class="content-wrapper">
+  <div class="card">
+    <div style="padding-top: 20px;" > 
+      <div class="row">
+        <div class="col-md-12">
+            &nbsp;&nbsp;&nbsp;&nbsp;  <label *ngIf='true' >User</label>&nbsp;
+        <select *ngIf='users' [(ngModel)]="selectedUserName" 
+           required="" (change)="selectedUser()" style="width:150px">
+          <option>------</option>
+          <option *ngFor="let user of users">{{user.userName}}</option>
+        </select>
+      
+        
+      &nbsp;&nbsp;&nbsp;&nbsp;  <label *ngIf='true' >Project</label>&nbsp;
+        <select *ngIf='projects' [(ngModel)]="selectedProjectName" 
+           required="" (change)="selectedProject()" style="width:150px">
+          <option>------</option>
+          <option *ngFor="let project of projects">{{project.projectName}}</option>
+        </select>
+        &nbsp;&nbsp;<button class="btn btn-primary" (click)="getLeads()">Get data</button>
+      
+      </div> 
+         
+    </div>
+    <div class="card-body">
+      <div class="row">
+      <h4 class="card-title" style="color:#131e42">Leads by project and user</h4>
+      </div>
+      <div class="row">
+        <div class="col-12 table-responsive">
+          <table id="mydatatable" class="table table-striped" >
+            <thead  style="background: #87ceeb;box-shadow: 1px 1px 1px 1px #cccccc;">
+              <tr >
+                <th></th>
+                <th >Lead Id</th>
+                <th >Name</th>
+                <th >Email</th>
+                <th >Phone Number</th> 
+                <th >Lead Source</th>
+                <th >Remarks</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+              <tr  >
+              <th><input type="checkbox"></th>
+              <td >1</td>
+              <td >MUkesh</td>
+              <td >mukesh@gmail.com</td>
+              <td >9871745631</td>
+              <td >Raw</td>
+              <td >Need 3bhk</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- content-wrapper ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="main-panel" >
+  <h4>Leads by project and user</h4>
+
+  <div class="col-sm-12">
+     <label *ngIf='true' >User</label>&nbsp;
+     <select *ngIf='users' [(ngModel)]="selectedUserName" 
+        required=""  
+       (change)="selectedUser()">
+       <option>------</option>
+       <option *ngFor="let user of users">{{user.userName}}</option>
+       
+     </select>
+     <label *ngIf='true' >Project</label>&nbsp;
+     <select *ngIf='projects' [(ngModel)]="selectedProjectName" 
+        required="" 
+       (change)="selectedProject()">
+       <option>------</option>
+       <option *ngFor="let project of projects">{{project.projectName}}</option>
+       
+     </select>
+   <button class="btn btn-primary" (click)="getLeads()">Get data</button>
+      
+   </div> 
+
+  </div>-->

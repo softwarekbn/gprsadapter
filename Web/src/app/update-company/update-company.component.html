@@ -1,0 +1,148 @@
+<!-- partial -->
+<div class="main-panel" >
+        <div class="my-container">
+                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+              </div>
+        <div class="content-wrapper">
+          <div class="card">
+           <div class="card-body">
+              <h4 class="card-title">Update Company</h4>
+              <h6 style="color:tomato">CompanyId:&nbsp; {{company.companyId}},&nbsp;Company Name:&nbsp;{{company.companyName}}</h6>
+              <div class="row">
+                    <div class="col-md-6">
+                            <form class="form-horizontal" [formGroup]="updateCompanyForm" 
+                             (ngSubmit)="updateCompany(updateCompanyForm.value)">
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" formControlName="companyName" required="" readonly
+                                [(ngModel)]="company.companyName" class="form-control" (change) ="validateCompanyName()"
+                                 placeholder="Enter Company Name" style="border-left: 3px solid red;">
+                                 <label *ngIf="companyNameB" style="color: red">Wrong Company Name *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Email-Id</label>
+                                <input type="text" formControlName="email" [(ngModel)]="company.email" 
+                                 class="form-control" placeholder="Enter  Email" required=""
+                                 style="border-left: 3px solid red;" (change) ="validateEmail()">
+                                 <label *ngIf="emailB" style="color: red">Please enter valid email *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" formControlName="phone" [(ngModel)]="company.phone" 
+                                class="form-control" placeholder="Enter Phone Number" required="" 
+                                style="border-left: 3px solid red;" (change)="validatePhone()">
+                                <label *ngIf="phoneB" style="color: red">Enter 10 degit mobile number *</label>
+                                <label *ngIf="phoneB0" style="color: red">First digit must not be zero *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Person</label>
+                                <input type="text" formControlName="contactPersonName" 
+                                [(ngModel)]="company.contactPersonName" class="form-control" 
+                                placeholder="Enter Contact Person" style="border-left: 3px solid red;" 
+                                 required="" (change) = "validateCpName()">
+                                 <label *ngIf="cpB" style="color: red">Please enter valid name,only a-z 
+                                     character minimum length 2 and max length 30 * </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Email-Id</label>
+                                <input type="text" formControlName="contactEmail" required="" 
+                                [(ngModel)]="company.contactEmail" class="form-control" 
+                                 placeholder="Enter Conatact Email" style="border-left: 3px solid red;"
+                                 (change) ="validateEmailC()">
+                                 <label *ngIf="emailC" style="color: red">Please enter valid email *</label>
+                            </div>
+                            <div class="form-group">
+                            <label>Country</label>
+                              <select type="text"  formControlName="country" required="" 
+                              [(ngModel)]="company.country" class="form-control" 
+                                    style="border-left: 3px solid red">
+                                    <option>---------</option>
+                                    <option *ngFor="let country of countryList">{{country}}</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                                <label>State</label>
+                                <input type="text" formControlName="state" required="" 
+                                [(ngModel)]="company.state" class="form-control" 
+                                placeholder="Enter State ame" style="border-left: 3px solid red;"
+                                (change)="validateState()" >
+                                <label *ngIf="stateB" style="color: red">Alphabate, space and . only 2 to 50 
+                                character long *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" formControlName="city" [(ngModel)]="company.city" 
+                                class="form-control" required="" placeholder="Enter City Name" 
+                                style="border-left: 3px solid red;" (change)="validateCity()">
+                                <label *ngIf="cityB" style="color: red">Alphabate, space and . only 2 to 50 character long *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Company Address</label>
+                                <textarea class="form-control" formControlName="companyAddress" 
+                                [(ngModel)]="company.companyAddress" row="7" required="" 
+                                placeholder="Enter Company Address" (change)="validateAddress()"></textarea>
+                                <label *ngIf="addressB" style="color: red">Alphabate, space and .,-,_,@,& and 
+                                    only 2 to 50 character long *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Phone</label>
+                                <input type="text" formControlName="contactPhone" 
+                                [(ngModel)]="company.contactPhone" class="form-control" 
+                                placeholder="Enter Conatact Person" style="border-left: 3px solid red;"
+                                (change) ="validatePhoneC()">
+                                <label *ngIf="phoneCB" style="color: red">Enter 10 degit mobile number *</label>
+                                <label *ngIf="phoneCB0" style="color: red">First digit must not be zero *</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Activaction</label>
+                               &nbsp;&nbsp; <input type="checkbox" formControlName="activation" required="" 
+                               [(ngModel)]="company.isActivated" name="isActivated">
+                            </div>
+                           <button type="submit"  class="btn btn-primary">Save</button>
+                           <button class="btn btn-danger" (click)="cancelCompany()" style="margin-left: 10px;">Cancel</button>
+                            </form>
+                          </div>
+                         
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        
+      </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
