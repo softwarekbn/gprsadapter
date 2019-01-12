@@ -48,6 +48,8 @@ export  class ResourceURI {
     // public static pAddUserP = ResourceURI.hostP+ 'addUser';
     //api/account/register:   http://api.victorcalls.com/api/account/register
     public static pAddUser = ResourceURI.host + '/api/account/register';
+    //add device
+    public static pDevice = ResourceURI.host + '/api/Account/Device';
     //http://api.victorcalls.com/api/Account/Users?userName=vedagya19: get user
     //http://api.victorcalls.com/api/Account/Roles : get user role
     //
@@ -63,6 +65,11 @@ export  class ResourceURI {
     
     // get user by login userName
     public static gUser = ResourceURI.host + '/api/Account/Users/';
+
+    // get device by login userName
+    public static gDevice = ResourceURI.host + '/api/Account/Device';
+    public static gProtocol = ResourceURI.host + '/api/Account/Device/';
+    public static gObject = ResourceURI.host + '/api/Account/Device/';
 
     // get user by companyId
     public static gUserCmp = ResourceURI.host + '/api/Account/Users?companyId=';

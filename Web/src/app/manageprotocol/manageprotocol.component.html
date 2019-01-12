@@ -1,0 +1,137 @@
+<!-- partial -->
+<div class="main-panel">
+  <div class="my-container">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    </div>
+  <div class="content-wrapper">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3" >
+        <h5 class="card-title" style="color:#131e42">Manage Protocols:&nbsp; {{length}}</h5></div>
+        <div class="col-md-1">
+        <button (click)="createDevice()" type="button" class="btn btn-success block">
+            <img src="assets/icons/Create Companies.svg" style="height: 18px;"> Create Protocol</button>
+        </div>
+        <div class="col-7" *ngIf="companies"  style="margin-left: 50px">
+          <label>Select Company</label>&nbsp;
+          <select [(ngModel)]="companyName" 
+             required="" placeholder="select Company" 
+            (change)="getdevicesOfSelectedCompany()">
+            <option>------</option>
+            <option *ngFor="let company of companies">{{company.companyName}}</option>
+            
+          </select> 
+       
+        </div>
+          </div>
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table id="mydatatable" class="table table-striped">
+              <thead style="background: #87ceeb;box-shadow: 1px 1px 1px 1px #cccccc;">
+                  <tr >
+                      <th >Device Name</th>
+                      <th >Display Name</th>
+                      <!-- <th >Role</th>
+                      <th >Company Id</th>
+                      <th >Email-ID</th> 
+                      <th >Manage User</th>  -->
+                     
+                      </tr>
+              </thead>
+              <tbody *ngIf="devices">
+                  <tr *ngFor="let myList of devices; let i = index" [attr.data-index]="i" >
+                      <td ><a (click)="showUser(myList)" style="background: transparent;cursor: pointer;"
+                         data-toggle="modal" data-target="#myModal2">
+                        {{myList.name}}</a></td>
+                       <td >{{myList.displayName}}</td>
+                       <!-- <td >{{myList.role.name}}</td>
+                       <td >{{myList.companyId}}</td>
+                       <td >{{myList.email}}</td> -->
+                       <td >
+                        <button (click)="updateUser(myList.id,myList.companyId)" type="button" 
+                        class="btn btn-primary block" >
+                        <img src="assets/icons/Update.svg" style="height: 16px;">Update</button>
+                          
+                        <button (click)="deleteUser(myList)" type="button" class="btn btn-danger block"
+                         data-toggle="modal" data-target="#myModal" >
+                         <img src="assets/icons/Delete 2.svg" style="height: 16px;">Delete</button>
+                         
+                       </td>
+                   
+                     </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+    
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm Delete?</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      
+      <div class="modal-body">
+       <div *ngIf="deviceD">
+          <h5>User name:{{deviceD.userName}}</h5>
+        <h5>Name:{{deviceD.firstName}}</h5>
+        <h5>Email:{{deviceD.email}}</h5>
+        <h5>Role:{{deviceD.role.name}}</h5>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (mouseover)="confirmDelete()">Confirm Delete</button>
+      </div>
+      </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+      
+    </div>
+  </div>
+</div> 
+
+<!-- Modal Window 2 start-->
+<div class="modal" id="myModal2">
+    <div class="modal-dialog" style="background: #87ceeb">
+      <div class="modal-content">
+      
+        
+        <div class="modal-header">
+          <h4 class="modal-title">Details of  User</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+      
+        <div class="modal-body">
+         <div *ngIf="sdevice">
+            <h5>Id:{{sdevice.id}}</h5>
+          <h5>User name:{{sdevice.userName}}</h5>
+          <h5>Name:{{sdevice.firstName +' '+ sdevice.lastName }}</h5>
+          <h5>Email:{{sdevice.email}}</h5>
+          <h5>Role Id:{{sdevice.role.roleID}}</h5>
+          <h5>Role Name:{{sdevice.role.name}}</h5>
+          <h5>Phone Number:{{sdevice.phoneNumber}}</h5>
+          <h5>Created On:{{sdevice.createdDateTime}}</h5>
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+  </div> <!-- Modal Window End -->
+
+
+

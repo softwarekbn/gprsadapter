@@ -14,8 +14,11 @@ import { Company } from '../modal/company';
 import { BehaviorSubject } from 'rxjs';
 import { ResourceURI } from '../apilist/ResourceURI';
 import { Registration } from '../modal/Registration';
+import {Device} from '../modal/device';
 import { ResourceLoader } from '@angular/compiler';
 import { Integrations } from '../modal/integrations';
+import { Protocol } from '../modal/Protocol';
+import { Objects } from '../modal/object';
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
 //import 'rxjs/add/observable/merge';
@@ -194,11 +197,33 @@ public postProject(project: Project):Observable<any>{
           // return  this.http.post(this.postAddDocUrl, formData, options)
           }
           postAddUser(usr: Registration ):Observable<any>{
+            console.log('user')
             return this.http.post(ResourceURI.pAddUser,usr, httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
+          postAddDevice(usr:Device):Observable<any>{
+            console.log('device')
+            return this.http.post(ResourceURI.pDevice,usr, httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
+          postAddProtocol(name,user:Protocol):Observable<any>{
+            console.log('device')
+            return this.http.post(ResourceURI.gProtocol + name + '/Protocol',user, httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
+          postAddObject(name,user:Objects):Observable<any>{
+            console.log('device')
+            return this.http.post(ResourceURI.gObject + name + '/Object',user, httpOptions);
           // return  this.http.post(this.postAddDocUrl, formData, options)
           }
           getUserRoles(){
             return this.http.get(ResourceURI.gUserRole, httpOptions);
+          }
+
+          getDevice(){
+            console.log('device')
+            return this.http.get(ResourceURI.pDevice, httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
           }
           getUserProject(userName: any){
             return this.http.get(ResourceURI.gUserProject+userName, httpOptions);
@@ -216,6 +241,14 @@ public postProject(project: Project):Observable<any>{
           getAllUser(userName){
             return this.http.get(ResourceURI.gUser+userName, httpOptions);
           }
+
+          getAllDevice(){
+            return this.http.get(ResourceURI.gDevice, httpOptions);
+          }
+          getAllProtocol(){
+            return this.http.get(ResourceURI.gProtocol, httpOptions);
+          }
+
           getAllCompanies(){
            const httpOptionsAuthG = {
               headers: new HttpHeaders({ 'Content-Type': 'application/json',

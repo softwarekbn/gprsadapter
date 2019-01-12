@@ -25,7 +25,7 @@ CORS(app)
 class Roles(Resource):
     def get(self):
         output = []
-        for s in roles.find({}):  # .skip(skips).limit(10):
+        for s in roles.find({},{'_id':False}):  # .skip(skips).limit(10):
             output.append(s)
             print(s)
         a =jsonify(output)

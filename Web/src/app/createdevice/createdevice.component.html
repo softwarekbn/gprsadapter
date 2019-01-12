@@ -6,33 +6,33 @@
     <div class="content-wrapper">
       <div class="card">
        <div class="card-body">
-          <h4 class="card-title" style="color: #fb4b1a">Create Protocol</h4>
+          <h4 class="card-title" style="color: #fb4b1a">Create Device</h4>
           <div class="row">
               <div class="col-md-6"> 
                   <form role="form" [formGroup]="createuserForm"
                   (ngSubmit)="createUser(createuserForm.value)">
                       
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Phone Number</label>
                        <input type="text" formControlName="phoneNumber" required="" class="form-control"
                        [(ngModel)]="user.phoneNumber" style="padding: 9px;" placeholder="Phone Number" 
                         (change)="validatePhone()">
                         <label *ngIf="phoneB" style="color: red">Enter 10 degit mobile number</label>
                        <label *ngIf="phoneB0" style="color: red">First digit must not be zero</label>
-                    </div>
+                    </div> -->
                   <div class="form-group">
-                    <label>User Name</label>
+                    <label>Name</label>
                     <input type="text"  formControlName="userName" required="" class="form-control"
-                        [(ngModel)]="user.userName" style="padding: 9px;" placeholder="UserName" 
+                        [(ngModel)]="user.userName" style="padding: 9px;" placeholder="Name" 
                         (change)="validateUser()">
-                        <label *ngIf="cuser" style="color: red">Enter Must be UserName</label>
+                        <label *ngIf="cuser" style="color: red">Enter Must be Name</label>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label>Password</label>
                         <input type="password" formControlName="password" required="" class="form-control"
                          [(ngModel)]="user.password" style="padding: 9px;" placeholder="Password">
-                  </div>
-                  <div class="form-group">
+                  </div> -->
+                  <!-- <div class="form-group">
                     <label>Confirm Password</label>
                       <input type="password" formControlName="cPassword" required="" class="form-control" 
                       placeholder="Confirm Password"style="padding: 9px;" (keyup)="confirmPassword($event)" 
@@ -61,37 +61,37 @@
                        [(ngModel)]="user.email" style="padding: 9px;" placeholder="Enter Email-Id" 
                         (change)="validateEmail()">
                         <label *ngIf="cuemail" style="color: red">Please enter valid Email</label>
-                  </div>
+                  </div> -->
                   <div class="form-group">
-                    <label>First Name</label>
+                    <label>Display Name</label>
                     <input type="firstname" formControlName="firstName" required="" class="form-control"
-                    [(ngModel)]="user.firstName" style="padding: 9px;" placeholder="Enter FirstName" 
+                    [(ngModel)]="user.firstName" style="padding: 9px;" placeholder="Enter Display Name" 
                       (change)="validatefName()">
-                      <label *ngIf="fName" style="color:red">Enter Must be First Name</label>
+                      <label *ngIf="fName" style="color:red">Enter Must be Display Name</label>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label>Last Name</label>
                       <input type="lastname" formControlName="lastName" required="" class="form-control"
                         [(ngModel)]="user.lastName" style="padding: 9px;" placeholder="Enter Last Name"
                         (change)="validatelName()">
                         <label *ngIf="lName" style="color: red;">Enter Must be Last Name</label>
-                   </div>
-                  <div class="form-group">
+                   </div> -->
+                  <!-- <div class="form-group">
                     <label>Role Name</label>
-                    <select formControlName="roleName" required="" class="form-control" [(ngModel)]="user.role.roleID"
+                    <select formControlName="roleName" required="" class="form-control" [(ngModel)]="user.role.name"
                     (change)="selectedRole()" style="padding: 9px;">
                     <option>--------</option>
                     <option *ngFor="let role of roles">{{role}}</option>
                   </select>
-                  </div>
-                    <div class="form-group" [hidden]="bSelectProject">
+                  </div> -->
+                    <!-- <div class="form-group" [hidden]="bSelectProject">
                       <label>Project Name</label>
                       <select formControlName="projectName" required="" class="form-control" 
                       [(ngModel)]="user.project.projectName" (change)="selectedProject()" style="padding: 9px;">
                       <option>-----------</option>
                       <option *ngFor="let project of projects">{{project}}</option>
                     </select>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-success btn-icon" 
                     style="margin-left: 10px;">Save</button>
                     <button (click)="cancleuser()"  class="btn btn-success btn-icon" 

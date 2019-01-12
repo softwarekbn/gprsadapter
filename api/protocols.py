@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, jsonify, request, request, Response
 from pymongo import MongoClient
 from flask_restful import Resource, Api
@@ -27,22 +29,38 @@ class protocol(Resource):
         # print(type(page))
         # skips = 10 * (int(page) - 1)
         output = []
-        for s in devices.find({"_id":deviceId},{"Protocol.communicationstartswith":1,"Protocol.communiactionendswith":1,"Protocol.valueSeparator":1,"Protocol.recordSeparator":1,"_id":False}):  # .skip(skips).limit(10):
+        for s in devices.find({"_id":deviceId},{"name":1,"Protocol.communicationstartswith":1,"Protocol.communiactionendswith":1,"Protocol.valueSeparator":1,"Protocol.recordSeparator":1,"_id":False}):  # .skip(skips).limit(10):
             output.append(s)
         return jsonify(output)
 
     def post(self,deviceId):
-        data = request.json
+        print('protocol post working')
+        data = request.data
         print(data)
+        a = data.decode("utf-8")
+        jsondata = json.loads(a)
+        communicationstartswith = jsondata['communicationstartswith']
+        print('item',communicationstartswith)
+        valueseprator = jsondata['valueseprator']
+        print('item', valueseprator)
+        recordseprator = jsondata['recordseprator']
+        print('item', recordseprator)
+        communicationendswith = jsondata['communicationendswith']
+        print('item', communicationendswith)
         output = []
         for item in db.devices.find({'_id':deviceId}):
             output.append(item)
             print(output)
+
         if(output):
             print("if working")
             set_value = {}
-            set_value['Protocol'] = data
+            set_value['Protocol'] = {"communicationstartswith": communicationstartswith, "valueseprator": valueseprator,
+                                     "recordseprator": recordseprator, "communicationendswith": communicationendswith,"Objects":[]}
             db.devices.update({'_id': deviceId},{'$set': set_value})
+            # db.devices.update({'_id': deviceId}, {
+            #     '$set': {"Protocol.communicationstartswith": communicationstartswith, "Protocol.valueseprator": valueseprator,
+            #              "Protocol.recordseprator": recordseprator, "Protocol.communicationendswith": communicationendswith}})
             return {"Response": "success"}
         else:
             return Response("{'Response': 'Error'}", 503, mimetype='application/json')

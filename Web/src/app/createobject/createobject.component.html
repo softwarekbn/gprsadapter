@@ -1,0 +1,84 @@
+<!-- partial -->
+<div class="main-panel" >
+    <div class="my-container">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+      <div class="content-wrapper">
+        <div class="card">
+         <div class="card-body">
+            <button (click)="createDevice()" type="button" class="btn btn-success block">
+                <img src="assets/icons/Create Companies.svg" style="height: 18px;"> General</button> |
+                <button (click)="createObject()" type="button" class="btn btn-success block">
+                  <img src="assets/icons/Create Companies.svg" style="height: 18px;"> Object</button>
+            <h4 class="card-title" style="color: #fb4b1a">Create Protocol Object</h4>
+           
+            
+            <div class="row">
+                <div class="col-md-6"> 
+                    <form role="form" [formGroup]="createuserForm"
+                    (ngSubmit)="createUser(createuserForm.value)">
+                      
+                    <div class="form-group">
+                      <label>Select Device</label>
+                      <select formControlName="roleName" required="" class="form-control"   [(ngModel)]="object.getdevice.name"
+                      (change)="selectedRole()" style="padding: 9px;">
+                      <option>--------</option>
+                      <option *ngFor="let getdevice of devices ">{{getdevice}}</option>
+                    </select>
+                    </div>
+  
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input type="text"  formControlName="name" required="" class="form-control"
+                          [(ngModel)]="object.name" style="padding: 9px;" placeholder="UserName" 
+                          (change)="validateUser()">
+                          <label *ngIf="cuser" style="color: red">Communication Starts With</label>
+                    </div>
+                    
+                    
+                     
+                     <div class="form-group">
+                       <label>Display Name</label>
+                        <input type="displayName" formControlName="displayName" required="" class="form-control" 
+                         [(ngModel)]="object.displayName" style="padding: 9px;" placeholder="Enter Email-Id" 
+                          (change)="validatedisplayName()">
+                          <label *ngIf="cudisplayName" style="color: red">Value Seprator</label>
+                    </div>
+                    <div class="form-group">
+                      <label>Unit</label>
+                      <input type="firstname" formControlName="unit" required="" class="form-control"
+                      [(ngModel)]="object.unit" style="padding: 9px;" placeholder="Enter FirstName" 
+                        (change)="validatefName()">
+                        <label *ngIf="fName" style="color:red">Record Seprator</label>
+                    </div>
+                    <div class="form-group">
+                      <label>Order</label>
+                        <input type="lastname" formControlName="order" required="" class="form-control"
+                          [(ngModel)]="object.order" style="padding: 9px;" placeholder="Enter Last Name"
+                          (change)="validatelName()">
+                          <label *ngIf="lName" style="color: red;">Communication Ends With</label>
+                     </div>
+                     <div class="form-group">
+                        <label>Correct to Decimal Place</label>
+                         <input type="text" formControlName="correcttodecimalplace" required="" class="form-control"
+                         [(ngModel)]="object.correcttodecimalplace" style="padding: 9px;" placeholder="Phone Number" 
+                          (change)="validatecomm()">
+                      </div>
+                      
+                      <button type="submit" class="btn btn-success btn-icon" 
+                      style="margin-left: 10px;">Save</button>
+                      <button (click)="cancleuser()"  class="btn btn-success btn-icon" 
+                      style="margin-left: 10px;">Cancel</button>
+                  </form>
+                
+                  </div>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      
+    </div>
+  

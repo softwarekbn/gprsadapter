@@ -238,6 +238,8 @@ projectList: Project[];
   
    }
 
+  
+   
    validateComp(){
    
     for(let i=0;i<=this.companies.length;i++){

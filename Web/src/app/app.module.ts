@@ -67,6 +67,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { LeadsComponent } from './leads/leads.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { VictorDashboardModule } from './victor-dashboard/victor-dashboard.module';
+import { ManagedeviceComponent } from './managedevice/managedevice.component';
+import { CreatedeviceComponent } from './createdevice/createdevice.component';
+import { TestingComponent } from './testing/testing.component';
+import { ManageprotocolComponent } from './manageprotocol/manageprotocol.component';
+import { CreateprotocolComponent } from './createprotocol/createprotocol.component';
+import { CreateobjectComponent } from './createobject/createobject.component';
+
 
 
 const appRoutes: Routes = [
@@ -103,11 +110,17 @@ const appRoutes: Routes = [
           {path: 'createuser', component: CreateuserComponent},
           {path: 'updateUser', component: UpdateuserComponent},
           {path: 'manageUser', component: ManageuserComponent},
+          {path: 'managedevice', component: ManagedeviceComponent},
+          {path: 'manageprotocol', component:ManageprotocolComponent},
           {path: 'manageCompanies', component: ManagecompaniesComponent},
           {path: 'createCompany',component: CreatecompanyComponent},
           {path: 'updateCompany',component: UpdateCompanyComponent},
           {path: 'vcdashboard',component: VcdashboardComponent},
           {path: 'createDocument',component: CreateDocumentComponent},
+          {path: 'createdevice',component: CreatedeviceComponent},
+          {path: 'createprotocol',component: CreateprotocolComponent},
+          {path:'createobject',component:CreateobjectComponent},
+         
           
           {path: 'leadsuserproject',component: LeadsComponent},
                   
@@ -158,6 +171,8 @@ const appRoutes: Routes = [
     UpdateuserComponent,
     FooterComponent,
     ManageuserComponent,
+    ManagedeviceComponent,
+    ManageprotocolComponent,
     ManagecompaniesComponent,
     CreatecompanyComponent,
     UpdateCompanyComponent,
@@ -166,9 +181,14 @@ const appRoutes: Routes = [
     VcdashboardComponent,
     VchomeComponent,
     CreateDocumentComponent,
-    
     LeadsComponent,
-    SuperadminComponent
+    SuperadminComponent,
+    CreatedeviceComponent,
+    TestingComponent,
+    ManageprotocolComponent,
+    CreateprotocolComponent,
+    CreateobjectComponent,
+    
    
      ],
   imports: [

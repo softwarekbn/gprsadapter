@@ -20,8 +20,12 @@ color:#131e42;width:273px;box-shadow: 1px 1px 1px 1px #555555;" id="mySidebar">
     Manage Integrations</a>-->
   <a routerLink="projects" class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
     style="height: 20px;"> &nbsp; Projects</a>
-  <a routerLink="manageUser" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+  <a routerLink="manageUser" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
     style="height: 20px;"> &nbsp; Users</a>
+    <a routerLink="managedevice" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+      style="height: 20px;"> &nbsp; Devices</a>
+    <a routerLink="manageprotocol" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+        style="height: 20px;"> &nbsp; Protocols</a>
   <a routerLink="manageCompanies" class="w3-bar-item w3-button" *ngIf="showCompany"><img src="assets/icons/Companies.svg" 
     style="height: 20px;"> &nbsp; Companies</a>
   <a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="showToAdminOnly"><img src="assets/icons/Integration.svg" 

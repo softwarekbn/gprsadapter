@@ -1,0 +1,78 @@
+<!-- partial -->
+<div class="main-panel" >
+  <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+    <div class="content-wrapper">
+      <div class="card">
+       <div class="card-body">
+          <button (click)="createDevice()" type="button" class="btn btn-success block">
+              <img src="assets/icons/Create Companies.svg" style="height: 18px;"> General</button> |
+              <button (click)="createObject()" type="button" class="btn btn-success block">
+                <img src="assets/icons/Create Companies.svg" style="height: 18px;"> Object</button>
+          <h4 class="card-title" style="color: #fb4b1a">Create Protocol General</h4>
+         
+          
+          <div class="row">
+              <div class="col-md-6"> 
+                  <form role="form" [formGroup]="createuserForm"
+                  (ngSubmit)="createUser(createuserForm.value)">
+                    
+                  <div class="form-group">
+                    <label>Select Device</label>
+                    <select formControlName="roleName" required="" class="form-control"   [(ngModel)]="protocol.getdevice.name"
+                    (change)="selectedRole()" style="padding: 9px;">
+                    <option>--------</option>
+                    <option *ngFor="let getdevice of devices ">{{getdevice}}</option>
+                  </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Communication Starts With</label>
+                    <input type="text"  formControlName="communicationstartswith" required="" class="form-control"
+                        [(ngModel)]="protocol.communicationstartswith" style="padding: 9px;" placeholder="UserName" 
+                        (change)="validateUser()">
+                        <label *ngIf="cuser" style="color: red">Communication Starts With</label>
+                  </div>
+                  
+                  
+                   
+                   <div class="form-group">
+                     <label>Value Seprator</label>
+                      <input type="valueseprator" formControlName="valueseprator" required="" class="form-control" 
+                       [(ngModel)]="protocol.valueseprator" style="padding: 9px;" placeholder="Enter Email-Id" 
+                        (change)="validatevalueseprator()">
+                        <label *ngIf="cuvalueseprator" style="color: red">Value Seprator</label>
+                  </div>
+                  <div class="form-group">
+                    <label>Record Seprator</label>
+                    <input type="firstname" formControlName="recordseprator" required="" class="form-control"
+                    [(ngModel)]="protocol.recordseprator" style="padding: 9px;" placeholder="Enter FirstName" 
+                      (change)="validatefName()">
+                      <label *ngIf="fName" style="color:red">Record Seprator</label>
+                  </div>
+                  <div class="form-group">
+                    <label>Communication Ends With</label>
+                      <input type="lastname" formControlName="communicationendswith" required="" class="form-control"
+                        [(ngModel)]="protocol.communicationendswith" style="padding: 9px;" placeholder="Enter Last Name"
+                        (change)="validatelName()">
+                        <label *ngIf="lName" style="color: red;">Communication Ends With</label>
+                   </div>
+                  
+                    
+                    <button type="submit" class="btn btn-success btn-icon" 
+                    style="margin-left: 10px;">Save</button>
+                    <button (click)="cancleuser()"  class="btn btn-success btn-icon" 
+                    style="margin-left: 10px;">Cancel</button>
+                </form>
+              
+                </div>
+              
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    
+  </div>

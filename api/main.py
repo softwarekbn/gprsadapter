@@ -10,7 +10,7 @@ from users import users, user
 from login import Login
 
 #ip of server
-serverurl = '192.168.42.55'
+serverurl = '192.168.1.10'
 #port
 port = 5000
 # define flask app
@@ -21,12 +21,12 @@ CORS(app)
 
 #Routes
 api.add_resource(controller, '/controller')
-# create device and find device with Id
-api.add_resource(device, '/api/device')
+# create device and get all devices
+api.add_resource(device, '/api/Account/Device')
 # create protocol and get protocol by deviceid
-api.add_resource(protocol, '/api/Device/<int:deviceId>/Protocol')
+api.add_resource(protocol, '/api/Account/Device/<int:deviceId>/Protocol')
 # create object and get object by deviceid
-api.add_resource(object, '/api/Device/<int:deviceId>/object')
+api.add_resource(object, '/api/Account/Device/<int:deviceId>/Object')
 # get all roles
 api.add_resource(Roles, '/api/Account/Roles')
 # create users and get all users by userName

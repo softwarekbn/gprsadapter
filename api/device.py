@@ -11,22 +11,22 @@ class device(Resource):
         print('device get working')
 
         #receive parameter
-        Id = request.args['deviceId']
+        # Id = request.args['deviceId']
 
         #convert received parameter into integer
-        id = int(Id)
+        # id = int(Id)
 
         # page = request.args['pageNum']
         # print(type(page))
         # skips = 10 * (int(page) - 1)
 
-        print(Id)
+        # print(Id)
 
         #define array
         output = []
 
         #itrating object
-        for s in devices.find({"_id": id}, {"_id": False,"name":1,"displayName":1}):
+        for s in devices.find({}, {"_id": 1,"name":1,"displayName":1}):
             output.append(s)
 
         #return final jsonify response
@@ -36,9 +36,12 @@ class device(Resource):
 
     def post(self):
         #receive devicename from user
-        name = request.json['name']
+        print('working')
+        a = request.data
+        print(a)
+        name = request.json['userName']
         #receive displayname from user
-        displayName = request.json['displayName']
+        displayName = request.json['firstName']
         Protocol = ''
         #creating a function for autoincrement
         fuc = '''
