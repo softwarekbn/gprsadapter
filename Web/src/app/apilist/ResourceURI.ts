@@ -1,5 +1,5 @@
 export  class ResourceURI {
-    private static host = 'http://192.168.1.10:5000';
+    private static host = 'http://192.168.1.12:5000';
     // private static hostP = 'http://192.168.1.10:5000/api/victor/';
     // private static hostl = 'http://192.168.1.10:5005';
     public static pLogin = ResourceURI.host + '/login';  // for login post api
@@ -70,6 +70,7 @@ export  class ResourceURI {
     public static gDevice = ResourceURI.host + '/api/Account/Device';
     public static gProtocol = ResourceURI.host + '/api/Account/Device/';
     public static gObject = ResourceURI.host + '/api/Account/Device/';
+    public static gallProtocol = ResourceURI.host + '/api/Account/Protocols';
 
     // get user by companyId
     public static gUserCmp = ResourceURI.host + '/api/Account/Users?companyId=';

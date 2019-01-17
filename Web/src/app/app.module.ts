@@ -73,6 +73,9 @@ import { TestingComponent } from './testing/testing.component';
 import { ManageprotocolComponent } from './manageprotocol/manageprotocol.component';
 import { CreateprotocolComponent } from './createprotocol/createprotocol.component';
 import { CreateobjectComponent } from './createobject/createobject.component';
+import { ManageobjectsComponent } from './manageobjects/manageobjects.component';
+import { DeviceprotocolComponent } from './deviceprotocol/deviceprotocol.component';
+import { DeviceobjectComponent } from './deviceobject/deviceobject.component';
 
 
 
@@ -120,9 +123,10 @@ const appRoutes: Routes = [
           {path: 'createdevice',component: CreatedeviceComponent},
           {path: 'createprotocol',component: CreateprotocolComponent},
           {path:'createobject',component:CreateobjectComponent},
-         
-          
+          {path: 'manageobjects',component:ManageobjectsComponent},
+          {path:'deviceprotocol',component:DeviceprotocolComponent},
           {path: 'leadsuserproject',component: LeadsComponent},
+          {path: 'deviceobject',component:DeviceobjectComponent},
                   
         //  {path: 'logout', component: }
     ]},
@@ -188,7 +192,9 @@ const appRoutes: Routes = [
     ManageprotocolComponent,
     CreateprotocolComponent,
     CreateobjectComponent,
-    
+    ManageobjectsComponent,
+    DeviceprotocolComponent,
+    DeviceobjectComponent,
    
      ],
   imports: [

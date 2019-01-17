@@ -211,6 +211,22 @@ public postProject(project: Project):Observable<any>{
             return this.http.post(ResourceURI.gProtocol + name + '/Protocol',user, httpOptions);
           // return  this.http.post(this.postAddDocUrl, formData, options)
           }
+          getProtocolsbyid(name):Observable<any>{
+            console.log('device')
+            return this.http.get(ResourceURI.gProtocol + name + '/Protocol', httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
+          getObjectsbyid(name):Observable<any>{
+            console.log('device')
+            return this.http.get(ResourceURI.gProtocol + name + '/Object', httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
+
+          getProtocols():Observable<any>{
+            console.log('device')
+            return this.http.get(ResourceURI.gallProtocol, httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
           postAddObject(name,user:Objects):Observable<any>{
             console.log('device')
             return this.http.post(ResourceURI.gObject + name + '/Object',user, httpOptions);
@@ -246,7 +262,7 @@ public postProject(project: Project):Observable<any>{
             return this.http.get(ResourceURI.gDevice, httpOptions);
           }
           getAllProtocol(){
-            return this.http.get(ResourceURI.gProtocol, httpOptions);
+            return this.http.get(ResourceURI.gallProtocol, httpOptions);
           }
 
           getAllCompanies(){

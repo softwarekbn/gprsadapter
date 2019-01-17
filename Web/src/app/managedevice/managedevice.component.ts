@@ -78,12 +78,16 @@ display;
          this.spinner.hide();
      }, 3000);
   }
-updateUser(id:string,cid:string){
-  console.log('updateUser');
-  sessionStorage.setItem('updateId',id);
-  sessionStorage.setItem('updatedCid',cid);
+updateUser(name:string){
+  console.log('updateUser',name);
+  sessionStorage.setItem('updateId',name);
   console.log('id',sessionStorage.getItem('updateId'));
-  this.router.navigate(['/userhome/updateUser']);
+  this.router.navigate(['/userhome/deviceprotocol']);
+}
+
+protocols(){
+  console.log('protocols');
+  this.router.navigate(['/userhome/manageprotocol']);
 }
 deleteUser(deviceD:Registration){
  // console.log('deleteUser');

@@ -2,7 +2,7 @@ from flask import jsonify,request
 from flask_restful import Resource
 
 # chrCur="11.2-5-6-0-6-3-78-222.33-665.235"
-class controller(Resource):
+class controllers(Resource):
     print('controller working')
     def get(self):
         output = []

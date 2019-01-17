@@ -28,9 +28,13 @@ class object(Resource):
         # print(type(page))
         # skips = 10 * (int(page) - 1)
         output = []
-        for s in devices.find({"_id":deviceId},{"Protocol.Objects.name":1,"Protocol.Objects.displayName":1,"Protocol.Objects.unit":1,"Protocol.Objects.order":1,"Protocol.Objects.correcttodecimalplace":1,"_id":False}):  # .skip(skips).limit(10):
-            output.append(s)
+
+        for s in db.devices.distinct("Protocol.Objects", {"_id": deviceId}):
+           output.append(s)
+           print(output)
         return jsonify(output)
+
+
     def post(self,deviceId):
         fuc = '''
                 function getNextSequenceValue(sequenceName){

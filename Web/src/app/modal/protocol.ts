@@ -1,5 +1,6 @@
 import { getDevice } from "./getdevice";
 import { Project } from "./project";
+import { Objects } from "./object";
 
 export class Protocol {
     communicationstartswith: string;
@@ -7,5 +8,6 @@ export class Protocol {
     recordseprator: string;
     communicationendswith: string;
     getdevice: getDevice;
+    Objects:Objects[]
       }
  

@@ -29,8 +29,9 @@ class protocol(Resource):
         # print(type(page))
         # skips = 10 * (int(page) - 1)
         output = []
-        for s in devices.find({"_id":deviceId},{"name":1,"Protocol.communicationstartswith":1,"Protocol.communiactionendswith":1,"Protocol.valueSeparator":1,"Protocol.recordSeparator":1,"_id":False}):  # .skip(skips).limit(10):
+        for s in devices.find({"_id":deviceId},{"name":1,"Protocol.communicationstartswith":1,"Protocol.communicationendswith":1,"Protocol.valueseprator":1,"Protocol.recordseprator":1}):  # .skip(skips).limit(10):
             output.append(s)
+            print('output',output)
         return jsonify(output)
 
     def post(self,deviceId):
@@ -65,3 +66,13 @@ class protocol(Resource):
         else:
             return Response("{'Response': 'Error'}", 503, mimetype='application/json')
 
+class Protocols(Resource):
+    def get(self,):
+        # page = request.args['pageNum']
+        # print(type(page))
+        # skips = 10 * (int(page) - 1)
+        output = []
+        for s in devices.find({},{"Protocol.communicationendswith":1,"Protocol.communicationstartswith":1,"Protocol.recordseprator":1,"Protocol.valueseprator":1,"name":1}):
+            output.append(s)
+            print(output)
+        return jsonify(output)

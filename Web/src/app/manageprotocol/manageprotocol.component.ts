@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Registration } from '../modal/Registration';
+import { Protocol } from '../modal/Protocol';
 import { VictorServiceService } from '../apiService/victor-service.service';
 import { Router } from '@angular/router';
 import { Role } from '../modal/Role';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { throwError } from 'rxjs';
 import { Company } from '../modal/company';
+import { getDevice } from '../modal/getdevice';
 
 @Component({
   selector: 'app-manageprotocol',
@@ -14,11 +15,12 @@ import { Company } from '../modal/company';
 })
 export class ManageprotocolComponent implements OnInit {
 
-  devices: Registration[];
-  deviceD: Registration;
-  sdevice : Registration;
+  devices: Protocol[];
+  deviceD: Protocol;
+  sdevice : Protocol;
   loading=false;
   companyName;
+  getDevice:getDevice
   companies: Company[];
   length;
   //role: Role;
@@ -31,8 +33,8 @@ export class ManageprotocolComponent implements OnInit {
         this.router.navigate(['']);
       }
       this.devices = [];
-      this.sdevice = new Registration();
-      this.sdevice.role = new Role();
+      this.sdevice = new Protocol();
+      this.sdevice.getdevice = new getDevice();
       this.loading=true;
       if(sessionStorage.getItem('role')==='SuperAdmin'){
         this.loading=true;
@@ -52,7 +54,7 @@ export class ManageprotocolComponent implements OnInit {
       }
     
        this.loading=true;
-      this.deviceService.getAllProtocol().subscribe((data: Registration[])=>{
+      this.deviceService.getProtocols().subscribe((data: Protocol[])=>{
         this.devices = data;
         this.loading=false;
         this.length= this.devices.length;
@@ -86,7 +88,10 @@ export class ManageprotocolComponent implements OnInit {
     console.log('id',sessionStorage.getItem('updateId'));
     this.router.navigate(['/userhome/updateUser']);
   }
-  deleteUser(deviceD:Registration){
+  objects(id:string,cid:string){
+    this.router.navigate(['/userhome/manageobjects']);
+  }
+  deleteUser(deviceD:Protocol){
    // console.log('deleteUser');
     this.deviceD = deviceD;
    // console.log(deviceD);
@@ -101,15 +106,15 @@ export class ManageprotocolComponent implements OnInit {
     console.log('confirm delete');
     //this.display='none'; 
    // $.modal.close();
-    this.deviceService.deleteUser(this.deviceD).subscribe((res:any)=>{
-      //this.devices = data;
-     // console.log(this.devices);
-      console.log(res);
-      //console.log('projects', this.projects);
-    });
+    // this.deviceService.deleteUser().subscribe((res:any)=>{
+    //   //this.devices = data;
+    //  // console.log(this.devices);
+    //   console.log(res);
+    //   //console.log('projects', this.projects);
+    // });
   
   }
-  showUser(user:Registration){
+  showUser(user:Protocol){
     console.log('Show User');
     this.sdevice = user;
   }
@@ -120,7 +125,7 @@ export class ManageprotocolComponent implements OnInit {
       if(this.companyName===this.companies[index].companyName){
         console.log(this.companyName);
         this.loading=true;
-        this.deviceService.getAllUserCmp(this.companies[index].companyId).subscribe((data: Registration[])=>{
+        this.deviceService.getAllUserCmp(this.companies[index].companyId).subscribe((data: Protocol[])=>{
           this.devices = data;
           console.log('Selected company User',this.devices);
          this.loading=false;
