@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"brandsBrother.Leads"},{"v":2,"key":{"leadId":1.0,"companyId":1.0},"name":"leadId_1_companyId_1","ns":"brandsBrother.Leads"}],"uuid":"4575232ad3d2476a9eaa7f9b6ad7fab6"}

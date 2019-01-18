@@ -10,8 +10,8 @@ from login import Login
 from devicedata import *
 
 #ip of server
-#serverurl = '192.168.1.12'
-serverurl = '127.0.0.1'
+serverurl = '192.168.43.150'
+#serverurl = '127.0.0.1'
 #port
 port = 5000
 # define flask app
