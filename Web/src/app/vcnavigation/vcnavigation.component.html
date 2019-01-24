@@ -16,24 +16,26 @@ color:#131e42;width:273px;box-shadow: 1px 1px 1px 1px #555555;" id="mySidebar">
 
     <button (click)="dashboard()" *ngIf="!bsAdmin" class="w3-bar-item w3-button"> <img src="assets/icons/Home.svg" 
       style="height: 20px;"> &nbsp;Dashboard ({{userRole}})</button>
-  <!--<a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="vedagya19">
-    Manage Integrations</a>-->
+  <a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="vedagya19">
+    Manage Integrations</a>
   <a routerLink="projects" class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
     style="height: 20px;"> &nbsp; Projects</a>
   <a routerLink="manageUser" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
     style="height: 20px;"> &nbsp; Users</a>
     <a routerLink="managedevice" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
       style="height: 20px;"> &nbsp; Devices</a>
-    <a routerLink="manageprotocol" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+    <a routerLink="createprotocol" *ngIf="showToAdminOnly" class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
         style="height: 20px;"> &nbsp; Protocols</a>
+        <a routerLink="devicedata"  class="w3-bar-item w3-button"><img src="assets/icons/User.svg" 
+          style="height: 20px;"> &nbsp; Device Data</a>
   <a routerLink="manageCompanies" class="w3-bar-item w3-button" *ngIf="showCompany"><img src="assets/icons/Companies.svg" 
-    style="height: 20px;"> &nbsp; Companies</a>
+    style="height: 20px;"> &nbsp; Companies</a> 
   <a routerLink="manageIntegrations" class="w3-bar-item w3-button" *ngIf="showToAdminOnly"><img src="assets/icons/Integration.svg" 
       style="height: 20px;"> &nbsp; Integration</a>
       <a routerLink="uploadFiles" class="w3-bar-item w3-button" *ngIf="bUploadExcel">
         <img src="assets/icons/Upload icon VC.svg" style="height: 20px;"> &nbsp;
         Upload Leads (Excel file)</a>
-  <div>
+   <div>
     <button (click)="showHide()" style="background: transparent;border: none;" 
      class="w3-bar-item w3-button"><img src="assets/icons/Leads.svg" 
      style="height: 20px;"> &nbsp;CRM  <i class="fa fa-caret-down"></i></button>
@@ -75,8 +77,8 @@ color:#131e42;width:273px;box-shadow: 1px 1px 1px 1px #555555;" id="mySidebar">
 
     <a routerLink="sales" class="w3-bar-item w3-button" > <img src="assets/icons/Team Location.svg" 
       style="height: 20px;"> &nbsp;Where is My Team ?</a>
-    <a routerLink="leadsuserproject" *ngIf='showToAdminOnly'  class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
-      style="height: 20px;"> &nbsp;Project and User Leads</a>
+    <!-- <a routerLink="leadsuserproject" *ngIf='showToAdminOnly'  class="w3-bar-item w3-button"><img src="assets/icons/projects.svg" 
+      style="height: 20px;"> &nbsp;Project and User Leads</a> -->
     <a routerLink="" class="w3-bar-item w3-button"><img src="assets/icons/Logout.svg" 
       style="height: 20px;"> &nbsp;Logout</a>
     <div style="margin-bottom: 20px;"></div>

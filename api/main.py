@@ -10,8 +10,8 @@ from login import Login
 from devicedata import *
 
 #ip of server
-serverurl = '192.168.43.150'
-#serverurl = '127.0.0.1'
+serverurl = '192.168.42.160'
+# serverurl = '127.0.0.1'
 #port
 port = 5000
 # define flask app
@@ -37,7 +37,9 @@ api.add_resource(Roles, '/api/Account/Roles')
 # get, update, delete user by userid
 api.add_resource(user, '/api/account/user')
 api.add_resource(Login, '/login')
-api.add_resource((data),'/device')
+api.add_resource((datain),'/device')
+api.add_resource((data),'/api/Account/Device/<int:deviceId>/controller')
+api.add_resource((location),'/api/device/locations')
 
 
 if __name__ == '__main__':

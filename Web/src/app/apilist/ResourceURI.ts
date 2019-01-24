@@ -1,5 +1,5 @@
 export  class ResourceURI {
-    private static host = 'http://192.168.43.150:5000';
+    private static host = 'http://192.168.42.160:5000';
     // private static hostP = 'http://192.168.1.10:5000/api/victor/';
     // private static hostl = 'http://192.168.1.10:5005';
     public static pLogin = ResourceURI.host + '/login';  // for login post api
@@ -120,7 +120,7 @@ export  class ResourceURI {
   // public static gLocations = ResourceURI.host + 'api/leads/locations?userName=';
 
   //50.62.160.53/ph12513175871/Modinagar@7/21
-  public static gLocations = ResourceURI.host + '/api/leads/locations?userName=';
+  public static gLocations = ResourceURI.host + '/api/device/locations';
 
   //get Api for getting Leads
   //api/Leads/Company?CompanyID=1&statusid=2

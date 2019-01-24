@@ -216,6 +216,11 @@ public postProject(project: Project):Observable<any>{
             return this.http.get(ResourceURI.gProtocol + name + '/Protocol', httpOptions);
           // return  this.http.post(this.postAddDocUrl, formData, options)
           }
+          getcontrollerbyid(name):Observable<any>{
+            console.log('controller')
+            return this.http.get(ResourceURI.gProtocol + name + '/controller', httpOptions);
+          // return  this.http.post(this.postAddDocUrl, formData, options)
+          }
           getObjectsbyid(name):Observable<any>{
             console.log('device')
             return this.http.get(ResourceURI.gProtocol + name + '/Object', httpOptions);
@@ -295,8 +300,8 @@ public postProject(project: Project):Observable<any>{
           public postLeads(lead: MyLead, LeadId:any):Observable<any>{
             return this.http.put(ResourceURI.pLeads + LeadId, lead,httpOptions);
           }
-          public getLocations(userName){
-            return this.http.get(ResourceURI.gLocations + userName ,httpOptions);
+          public getLocations(){
+            return this.http.get(ResourceURI.gLocations ,httpOptions);
             //return this.http.get(ResourceURI.gLocations + userName ,httpOptions);
           }
         

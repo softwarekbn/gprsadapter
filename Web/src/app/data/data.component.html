@@ -1,3 +1,5 @@
+
+
 <!-- partial -->
 <div class="main-panel">
   <div class="my-container">
@@ -8,59 +10,44 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-3" >
-        <h5 class="card-title" style="color:#131e42">Manage Protocols:&nbsp; {{length}}</h5></div>
+              <h6 *ngIf="updatedUser" style="color: tomato">Device Id:&nbsp;{{updatedUser.deviceId}}
+                  </h6>
+        <h5 class="card-title" style="color:#131e42">Data&nbsp; {{length}}</h5></div>
         <div class="col-md-1">
-        <button (click)="createDevice()" type="button" class="btn btn-success block">
-            <img src="assets/icons/Create Companies.svg" style="height: 18px;"> Create Protocol</button>
-        </div>
-        <div class="col-7" *ngIf="companies"  style="margin-left: 50px">
-          <label>Select Company</label>&nbsp;
-          <select [(ngModel)]="companyName" 
-             required="" placeholder="select Company" 
-            (change)="getdevicesOfSelectedCompany()">
-            <option>------</option>
-            <option *ngFor="let company of companies">{{company.companyName}}</option>
-            
-          </select> 
-       
-        </div>
+       </div>
           </div>
-        <div class="row">
+        <div class="row" >
           <div class="col-12 table-responsive">
             <table id="mydatatable" class="table table-striped">
               <thead style="background: #87ceeb;box-shadow: 1px 1px 1px 1px #cccccc;">
                   <tr >
-                            
-                      <th >Communication Starts With</th>
-                      <th >Value Seprator</th>
-                      <th >Record Seprator</th> 
-                      <th >Communication Ends With</th> 
-                      <th >Update</th> 
-                      <th >Delete</th> 
-                      <th >Objects</th> 
+                      
+                      
+                      <th >batteryVoltage</th>
+                      <th >chargingCurrent</th>
+                      <th >solarVoltage</th> 
+                      <th >mode</th> 
+                      <th >daily</th> 
+                      <th >monthly</th> 
+                      <th >percent</th>
+                      <th >latitude</th>
+                      <th >longitude</th> 
                      
                       </tr>
               </thead>
-              <tbody *ngIf="devices">
-                  <tr *ngFor="let myList of devices; let i = index" [attr.data-index]="i" >
+              <tbody *ngIf="updatedUser">
+                  <tr *ngFor="let object of users; let i = index" [attr.data-index]="i">
                       
-                       <td >{{myList.Protocol.communicationstartswith}}</td>
-                       <td >{{myList.Protocol.valueseprator}}</td>
-                       <td >{{myList.Protocol.valueseprator}}</td>
-                       <td >{{myList.Protocol.communicationendswith}}</td>
-                       <td >
-                        <button (click)="updateUser(myList.id,myList.companyId)" type="button" 
-                        class="btn btn-primary block" >
-                        U</button></td>
-                          <td>
-                        <button (click)="deleteUser(myList)" type="button" class="btn btn-danger block"
-                         data-toggle="modal" data-target="#myModal" >
-                         D</button></td>
-                         <td>
-                         <button (click)="objects(myList)" type="button" class="btn btn-danger block"
-                         >
-                         O</button>
-                       </td>
+                       <td >{{object.batteryVoltage}}</td>
+                       <td >{{object.chargingCurrent}}</td>
+                       <td >{{object.solarVoltage}}</td>
+                       <td >{{object.mode}}</td>
+                       <td >{{object.daily}}</td>
+                       <td >{{object.monthly}}</td>
+                       <td >{{object.percent}}</td>
+                       <td >{{object.latitude}}</td>
+                       <td >{{object.longitude}}</td>
+                       
                    
                      </tr>
               </tbody>

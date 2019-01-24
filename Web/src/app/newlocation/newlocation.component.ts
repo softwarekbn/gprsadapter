@@ -57,7 +57,7 @@ salesPerson: Salesperson[];
 //this.xyz = new Array<Location>(19);
    // this.locations = Array
    this.loading=true;
-         locationSrv.getLocations(sessionStorage.getItem('userName')).subscribe((data:Salesperson[])=>{
+         locationSrv.getLocations().subscribe((data:Salesperson[])=>{
             this.salesPerson = data;
             this.loading=false;
            // this.len= this.salesPerson.length;

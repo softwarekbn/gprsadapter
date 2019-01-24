@@ -76,6 +76,8 @@ import { CreateobjectComponent } from './createobject/createobject.component';
 import { ManageobjectsComponent } from './manageobjects/manageobjects.component';
 import { DeviceprotocolComponent } from './deviceprotocol/deviceprotocol.component';
 import { DeviceobjectComponent } from './deviceobject/deviceobject.component';
+import { DevicedataComponent } from './devicedata/devicedata.component';
+import { DataComponent } from './data/data.component';
 
 
 
@@ -127,6 +129,8 @@ const appRoutes: Routes = [
           {path:'deviceprotocol',component:DeviceprotocolComponent},
           {path: 'leadsuserproject',component: LeadsComponent},
           {path: 'deviceobject',component:DeviceobjectComponent},
+          {path: 'devicedata',component:DevicedataComponent},
+          {path: 'data', component:DataComponent},
                   
         //  {path: 'logout', component: }
     ]},
@@ -195,6 +199,8 @@ const appRoutes: Routes = [
     ManageobjectsComponent,
     DeviceprotocolComponent,
     DeviceobjectComponent,
+    DevicedataComponent,
+    DataComponent,
    
      ],
   imports: [

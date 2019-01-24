@@ -6,7 +6,8 @@ class data(Resource):
     print('controller working')
     def get(self):
         output = []
-        for s in data.find({}, {'_id': False}):
+        deviceId = request.args['deviceId']
+        for s in db.controller.find({"deviceId":deviceId}, {'_id': False}):
             output.append(s)
         return jsonify({'result': output})
         # data=controller.find_one({},{'_id':False})
